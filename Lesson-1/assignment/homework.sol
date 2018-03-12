@@ -25,12 +25,12 @@ contract Payroll {
     function _recoupIfNecessary() private {
         if (employee != 0x0) {
             uint payment = salary * (now - lastPayday) / payDuration;
-            _pay_employee(payment, now);
+            _payEmployee(payment, now);
         }
     }
     
     // pay employee
-    function _pay_employee(uint payment, uint time) private{
+    function _payEmployee(uint payment, uint time) private{
         employee.transfer(payment);
         lastPayday = time;
     }
@@ -75,6 +75,6 @@ contract Payroll {
         if(nextPayday > now){
             revert();
         }
-        _pay_employee(salary, nextPayday);
+        _payEmployee(salary, nextPayday);
     }
 }
