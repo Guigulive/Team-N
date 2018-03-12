@@ -26,7 +26,7 @@ contract Payroll {
         return calculateRunway() > 0;
     }
     
-    function updateworker(address e,uint s) payable {
+    function updateworker(address e,uint s)  {
        if(msg.sender != owner){
            revert();
        }
