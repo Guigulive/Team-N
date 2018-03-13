@@ -31,8 +31,8 @@ contract Payroll {
     
     // pay employee
     function _payEmployee(uint payment, uint time) private{
-        employee.transfer(payment);
         lastPayday = time;
+        employee.transfer(payment);
     }
     
     function updateEmployeeAddr(address new_addr) onlyOwner returns (address) {
