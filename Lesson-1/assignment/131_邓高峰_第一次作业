@@ -1,0 +1,53 @@
+pragma solidity ^0.4.14;
+
+contract Payroll{
+    uint salary ;
+    address employee;
+    uint payDuration; 
+    uint lastPayday; //初始化为刚布置时的时间
+    
+
+    
+    function updateInfo(address e,uint s){
+        salary = s * 1 ether;
+        employee = e;
+        lastPayday = now;
+    }
+    
+    function addFund() payable returns(uint){
+        //使函数具有接受钱的功能需要用关键字payable来修饰
+        return this.balance;
+        
+    }
+    
+    function calculateRunway() returns(uint){
+        return this.balance / salary;
+        
+    }
+    
+    function hasEnoughFund() returns (bool){
+        return calculateRunway() > 0;
+        
+    }
+
+     
+    function getPaid(){   
+    //如果不是frank调用这个函数，就抛出异常
+    //msg是查看调用函数的人的信息
+       if(msg.sender != employee){
+            revert();
+        }
+        
+         uint nextPayDay = lastPayday + payDuration;
+         if ( nextPayDay > now){  //说明还不到领工资的时间
+            revert();
+            }
+            lastPayday = nextPayDay;  
+            //内部变量修改完成再
+            //给外部变量钱
+            employee.transfer(salary);
+            
+        }
+    
+    
+}
