@@ -1,0 +1,57 @@
+pragma solidity ^0.4.14;
+
+
+contract Payroll {
+    uint salary = 1 ether;
+    address frank = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
+    uint constant payDuration = 10 seconds;
+    uint lastPayday = now;
+
+    //余额
+    function addFund() payable returns (uint) {
+        return this.balance;
+    }
+
+
+    //够发的月份数
+    function caculateRunway() returns (uint) {
+        return this.balance / salary;
+    }
+
+    //是否有足够的钱（至少一月）
+    function hasEnoughMoney() returns (bool) {
+        return caculateRunway() > 0;
+    }
+
+    //付薪水
+    function getPaid() {
+        
+        uint payDay = lastPayday + payDuration;
+        if (payDay < now ) {
+            lastPayday = payDay;
+            frank.transfer(salary);
+        } else {
+            revert();
+        }
+
+    }
+    
+    //change address of employee
+    function modifyAddress(address addr) {
+        frank = addr;
+    }
+    
+    //change salary
+    function modifySalary(uint newSalary) {
+        salary = newSalary;
+    }
+    
+    function getSalary() returns (uint) {
+        return salary;
+    }
+    
+    function getAddress() returns (address) {
+        return frank;
+    }
+
+}
