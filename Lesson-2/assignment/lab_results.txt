@@ -9,5 +9,5 @@
 9. 29275
 10. 30063
 
-每次调用，gas线性增加。
+现象：每次调用，gas线性增加。
 原因：每增加一个员工，calculateRunway中的for语句便会多一次循环，“totalSalary += employees[i].salary;” 便会多调用一次，消耗的gas便会增加。
