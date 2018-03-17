@@ -1,3 +1,0 @@
-因为每次都for 循环计算，很耗费gas, 用一个成员变量记录totalSalary的变化
-
-updateEmployee, addEmployee, removeEmployee中做相应的调整，这样在calculateRunOut的时候就直接用就可以了
