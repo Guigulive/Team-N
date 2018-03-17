@@ -1,0 +1,28 @@
+Gas of calculateRunway after each addEmployee
+Number of Employee      Transaction cost        Execution cost
+1                       22971 gas               1699 gas
+2                       23759 gas               2487 gas
+3                       24547 gas               3275 gas
+4                       25335 gas               4063 gas
+5                       26123 gas               4851 gas
+6                       26911 gas               5639 gas
+7                       27699 gas               6427 gas
+8                       28487 gas               7215 gas
+9                       29275 gas               8003 gas
+10                      30063 gas               8791 gas
+Each time, the transaction cost and execution cost both increase 788 gas. The reason for this is because calculateRunway needs to calculate the total cost 
+for each time to sum from the first employee to the last employee.
+
+I remove the for loop in calculateRunway function, and update totalSalary when adding, removing and updating an employee.
+After optimized
+Number of Employee      Transaction cost        Execution cost
+1                       22122 gas               850 gas
+2                       22122 gas               850 gas
+3                       22122 gas               850 gas
+4                       22122 gas               850 gas
+5                       22122 gas               850 gas
+6                       22122 gas               850 gas
+7                       22122 gas               850 gas
+8                       22122 gas               850 gas
+9                       22122 gas               850 gas
+10                      22122 gas               850 gas
