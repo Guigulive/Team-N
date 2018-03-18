@@ -83,3 +83,17 @@ contract Payroll {
         employee.id.transfer(employee.salary);
     }
 }
+
+// gas 消耗
+calculateRunway	transaction cost (gas)	execution cost (gas)
+1	22966	1694
+2	23747	2475
+3	24528	3256
+4	25309	4037
+5	26090	4818
+6	26871	5599
+7	27652	6380
+8	28433	7161
+9	29214	7942
+10	29995	8723
+每addEmployee一次，calculateRunway的gas增加781
