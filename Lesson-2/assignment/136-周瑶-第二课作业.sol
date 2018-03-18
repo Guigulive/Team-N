@@ -85,6 +85,7 @@ contract Payroll {
 }
 
 // gas 消耗
+/*
 calculateRunway	transaction cost (gas)	execution cost (gas)
 1	22966	1694
 2	23747	2475
@@ -97,3 +98,4 @@ calculateRunway	transaction cost (gas)	execution cost (gas)
 9	29214	7942
 10	29995	8723
 每addEmployee一次，calculateRunway的gas增加781
+*/
