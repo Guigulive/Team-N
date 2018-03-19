@@ -4,28 +4,28 @@
 作业内容见 *Payroll.sol*
 
 #### addFund
-![](images/addFund.jpg)
+![](images/addFund.png)
 
 #### addEmployee
-![](images/addEmployee.jpg)
+![](images/addEmployee.png)
 
 #### calculateRunway
-![](images/calculateRunway.jpg)
+![](images/calculateRunway.png)
 
 #### changePaymentAddress
-![](images/changePaymentAddress.jpg)
+![](images/changePaymentAddress.png)
 
 #### getPaid
-![](images/getPaid.jpg)
+![](images/getPaid.png)
 
 #### hasEnoughFund
-![](images/hasEnoughFund.jpg)
+![](images/hasEnoughFund.png)
 
 #### removeEmployee
-![](images/removeEmployee.jpg)
+![](images/removeEmployee.png)
 
 #### updateEmployee
-![](images/updateEmployee.jpg)
+![](images/updateEmployee.png)
 
 ## Q2
 作业内容见 *Payroll.sol中changePaymentAddress函数的实现，使用modifier实现了删除employees中某个元素的功能*
