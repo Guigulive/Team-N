@@ -54,3 +54,6 @@ L(Z) := [Z] + merge(L(K2), L(K1), [K2, K1])
       = [Z, K2, C, K1, B, A, O]
 ```
 
+验证可见 **MultiInher.sol的结果如下**
+![](images/multi.png)
+
