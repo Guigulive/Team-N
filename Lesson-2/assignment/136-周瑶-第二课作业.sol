@@ -84,19 +84,3 @@ contract Payroll {
     }
 }
 
-// gas 消耗
-/*
-calculateRunway	transaction cost (gas)	execution cost (gas)
-1	22966	1694
-2	23747	2475
-3	24528	3256
-4	25309	4037
-5	26090	4818
-6	26871	5599
-7	27652	6380
-8	28433	7161
-9	29214	7942
-10	29995	8723
-每addEmployee一次，calculateRunway的gas增加781.这是因为每增加一个employee, 
-calculateRunway函数就需要做一次for循环，从头到尾计算一次totalSalary.
-*/
