@@ -19,6 +19,17 @@ contract Payroll {
         owner = msg.sender;
     }
     
+    modifier onlyOwner {
+        require(msg.sender == owner);
+        _;
+    }
+    
+    modifier employeeExist (address employeeId) {
+        var employee = employees[employeeId];
+        assert(employee.id != 0x0);
+        _;
+    }
+    
     function _partialPaid  (Employee employee)  private {
          uint payment = employee.salary * (now - employee.lastPayday) / payDuration;
          employee.id.transfer(payment);
@@ -26,9 +37,7 @@ contract Payroll {
     }
     
 
-    
-    function addEmployee(address employeeId, uint salary) {
-        require(msg.sender == owner);
+    function addEmployee(address employeeId, uint salary) onlyOwner {
         
         var employee = employees[employeeId];
         assert(employee.id == 0x0);
@@ -37,10 +46,9 @@ contract Payroll {
         
     }
     
-    function removeEmployee(address employeeId) {
-        require(msg.sender == owner);
+    function removeEmployee(address employeeId) onlyOwner employeeExist (employeeId) {
+        
         var employee = employees[employeeId];
-        assert(employee.id != 0x0);
         
         _partialPaid(employee);
         totalSalary -= employees[employeeId].salary;
@@ -48,11 +56,9 @@ contract Payroll {
         
     }
     
-    function updateEmployee(address employeeId, uint salary) {
-        require(msg.sender == owner);
+    function updateEmployee(address employeeId, uint salary) onlyOwner employeeExist (employeeId) {
         
         var employee = employees[employeeId];
-        assert(employee.id != 0x0);
         
         _partialPaid(employee);
         totalSalary -= employees[employeeId].salary;
@@ -81,13 +87,17 @@ contract Payroll {
         return calculateRunway() > 0;
     }
     
-/*  function checkEmployee(address employeeId) returns(uint salary,uint lastPayday) {
+/*  
+
+    function checkEmployee(address employeeId) returns(uint salary,uint lastPayday) {
         var employee = employees[employeeId];
         salary = employee.salary;
         lastPayday = employee.lastPayday;
     }
+    
 */
-    function getPaid() {
+
+    function getPaid() employeeExist (msg.sender) {
         
         var employee = employees[msg.sender];
         require(employee.id != 0x0);
