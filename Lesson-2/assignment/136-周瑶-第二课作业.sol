@@ -97,5 +97,6 @@ calculateRunway	transaction cost (gas)	execution cost (gas)
 8	28433	7161
 9	29214	7942
 10	29995	8723
-每addEmployee一次，calculateRunway的gas增加781
+每addEmployee一次，calculateRunway的gas增加781.这是因为每增加一个employee, 
+calculateRunway函数就需要做一次for循环，从头到尾计算一次totalSalary.
 */
