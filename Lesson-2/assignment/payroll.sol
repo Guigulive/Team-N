@@ -2,9 +2,11 @@ pragma solidity ^0.4.14;
 contract Payroll {
     
     address contractOwner ; //智能合约创建者，工资系统管理员
+	uint totalSalary ;
     
     function  Payroll(){
         contractOwner = msg.sender ;
+		totalSalary = 0 ;
     }
     
     struct Employee{
@@ -44,7 +46,10 @@ contract Payroll {
          var (employee,index) = _findEmployee(employeeId);
          assert(employee.employeeId == 0x0);
          salary = salary * 1 ether;
+		 //update  totalSalary when add a employee
+         totalSalary += salary * 1 ether;
          employees.push(Employee(employeeId,salary,now));
+		 
     }
     
     // 删除员工
@@ -53,6 +58,8 @@ contract Payroll {
         var (employee,index) = _findEmployee(employeeId);
         assert(employee.employeeId != 0x0);
         _partialPaid(employee);
+		//update  totalSalary when remove a employee
+        totalSalary -= employees[index].salary * 1 ether;
          
          //删除元素并填补空白元素 
         delete(employees[index]);
@@ -60,6 +67,8 @@ contract Payroll {
 			employees[index] = employees[employees.length -1];
         }
 		employees.length = employees.length -1;
+		
+		
     }
     
     //更新员工薪资
@@ -67,12 +76,15 @@ contract Payroll {
 		require(msg.sender == contractOwner);
         var (employee,index) = _findEmployee(employeeId);
         assert(employee.employeeId != 0x0);
+		//update totalSalary when update employee salary
+		totalSalary = totalSalary + salary * 1 ether - employees[index].salary;
         //如若有支付的工资则先支付 
         bool ispay = _partialPaid(employee);
         if(ispay){ //未支付则不更新最后支付时间 
             employees[index].lastPayDay = now;
         }
         employees[index].salary = salary * 1 ether;
+		
         
     }
     
@@ -114,12 +126,7 @@ contract Payroll {
      
     //计算合约balance还能支付的次数 
     function calculateRunway() returns (uint value){
-        for (uint i; i < employees.length; i++){
-            value += employees[i].salary;
-        }
-        return this.balance /value;
-		
-		
+        return this.balance /totalSalary ;
     }
     
     /**
