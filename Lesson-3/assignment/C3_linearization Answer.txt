@@ -1,0 +1,7 @@
+L[O] = [O]
+L[A] = [A, O]
+L[B] = [B, O]
+L[C] = [C, O]
+L[K1] = [K1, B, A, O]
+L[K2] = [K2, C, A, O]
+L[Z] = [Z, K2, C, K1, B, A, O]
