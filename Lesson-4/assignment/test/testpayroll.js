@@ -8,13 +8,13 @@ contract('Payroll', function (accounts) {
             wh = instance;
             return wh.addEmployee(accounts[1], 1);
         }).then(function () {
-            return wh.employees.call(accounts[1]);
+            return wh.employees(accounts[1]);
         }).then(function (employee) {
             employee1 = employee[0];
         }).then(function () {
             return wh.addEmployee(accounts[2], 1);
         }).then(function () {
-            return wh.employees.call(accounts[2]);
+            return wh.employees(accounts[2]);
         }).then(function (employee) {
             employee2 = employee[0];
         }).then(function () {
@@ -65,13 +65,13 @@ contract('Payroll', function (accounts) {
             var banlance2=web3.eth.getBalance(accounts[0]);
             console.log(web3.fromWei(banlance2.toNumber(),'ether'),'ether');
         }).then(function () {
-            return wh.employees.call(accounts[1]);
+            return wh.employees(accounts[1]);
         }).then(function (employee) {
             employee1 = employee[0];
         }).then(function () {
             return wh.removeEmployee(accounts[1]);
         }).then(function () {
-            return wh.employees.call(accounts[1]);
+            return wh.employees(accounts[1]);
         }).then(function (employee) {
             employee2 = employee[0];
         }).then(function () {
