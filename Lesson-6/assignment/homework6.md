@@ -1,4 +1,4 @@
-##解压压缩包，然后需要npm install一下
+## 解压压缩包，然后需要npm install一下
 
 ### 截图见见如下图片
 add fund
