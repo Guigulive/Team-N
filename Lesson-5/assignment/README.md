@@ -1,5 +1,5 @@
 ## 硅谷live以太坊智能合约 第五课作业
 
-只修改和上传components文件夹中的内容
+只修改和上传components文件夹中的内容和contract文件夹
 
 这里是同学提交作业的目录
